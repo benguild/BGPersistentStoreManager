@@ -27,7 +27,7 @@
 
 #pragma mark - Advanced functions
 
-- (void)performContextSaveOperationAndOptionallyCleanUpOldObjects:(BOOL)cleanUpOldObjects; // NOTE: This is already called automatically on backgrounding/termination, but you can also call it manually. Useful, for example, when completing a background operation, as the app is already in the background then.
+- (void)performContextSaveOperationAndOptionallyCleanUpOldObjects:(BOOL)cleanUpOldObjects; // NOTE: This is already called automatically on backgrounding/termination, but you can also call it manually. Useful, for example, when completing a background operation, as the app is already in the background then. Also useful for after a cache loss occurs to force re-save persisted data immediately that was restored from another source.
 
 
 @end
