@@ -19,16 +19,11 @@
 + (BGPersistentStoreManager *)sharedManager;
 
 - (NSManagedObjectContext *)managedObjectContext;
+
+- (void)handleSaveError:(NSError *)error; // This method can be subclassed.
 - (void)cleanUpOldObjects; // This method can be subclassed to clean up old objects on save.
 
 - (NSError *)performBlockOnChildContext:(void (^)(NSManagedObjectContext *context, NSString *loggingDescriptor))block withLoggingDescriptor:(NSString *)loggingDescriptor;
-
-
-#pragma mark - Internal methods
-
-// NOTE: Certain internal methods are exposed for subclassing, but do not need (and perhaps should not) to be called manually by external functions.
-
-- (NSError *)saveContextAndCleanUpOldObjects:(BOOL)cleanUpOldObjects;
 
 
 @end

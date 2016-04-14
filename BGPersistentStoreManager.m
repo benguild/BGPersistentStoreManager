@@ -238,7 +238,7 @@
     
 }
 
-- (NSError *)saveContextAndCleanUpOldObjects:(BOOL)cleanUpOldObjects
+- (void)saveContextAndCleanUpOldObjects:(BOOL)cleanUpOldObjects
 {
     NSError *error;
     
@@ -248,7 +248,9 @@
         {
             NSLog(@"Unresolved Core Data error on save: %@, %@", error, [error userInfo]);
             
-            return error;
+            [self handleSaveError:error];
+            
+            return;
             
         }
         ////
@@ -260,6 +262,12 @@
         }
         
     }
+    
+}
+
+- (void)handleSaveError:(NSError *)error
+{
+    // Do nothing. Subclassable!
     
 }
 
