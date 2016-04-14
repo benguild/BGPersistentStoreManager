@@ -45,7 +45,7 @@
     {
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil usingBlock:^(NSNotification *note)
         {
-            [self saveContextAndCleanUpOldObjects:YES];
+            [self performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
             
         } ];
         
@@ -53,7 +53,7 @@
         {
             // NOTE: This is not guaranteed to be called, but is here in case the app does not support backgrounding... etc.
             
-            [self saveContextAndCleanUpOldObjects:YES];
+            [self performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
             
         } ];
         ////
@@ -238,7 +238,7 @@
     
 }
 
-- (void)saveContextAndCleanUpOldObjects:(BOOL)cleanUpOldObjects
+- (void)performContextSaveOperationAndOptionallyCleanUpOldObjects:(BOOL)cleanUpOldObjects
 {
     NSError *error;
     

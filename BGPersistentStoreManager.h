@@ -25,5 +25,9 @@
 
 - (NSError *)performBlockOnChildContext:(void (^)(NSManagedObjectContext *context, NSString *loggingDescriptor))block withLoggingDescriptor:(NSString *)loggingDescriptor;
 
+#pragma mark - Advanced functions
+
+- (void)performContextSaveOperationAndOptionallyCleanUpOldObjects:(BOOL)cleanUpOldObjects; // NOTE: This is already called automatically on backgrounding/termination, but you can also call it manually. Useful, for example, when completing a background operation, as the app is already in the background then.
+
 
 @end
