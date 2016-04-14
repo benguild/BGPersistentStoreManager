@@ -39,7 +39,8 @@ Because Core Data is not thread-safe, use this block function to create and merg
 
 Other useful tips:
 * If your database becomes corrupt, **it will automatically be deleted from disk** and recreated fresh. The `dataStoreWasResetOrCreatedOnLoad` property of the singleton will be TRUE in this case.
-* You may subclass the singleton and take advantage of implementing its `cleanUpOldObjects:` method. This method is called whenever the context was just saved successfully. The context will then re-save again after this method finishes, but only if any changes were made since the first save.
+* You may subclass the singleton and take advantage of implementing its `cleanUpOldObjects:` method. This method is called (on the main thread) whenever the main context was just saved successfully. The context will then re-save again after this method finishes, but only if any changes were made since the first save.
+* You may also optionally subclass its `saveContextAndCleanUpOldObjects:` method to catch errors and handle them however you'd like. Just call `super`!
 
 
 ## Installation
