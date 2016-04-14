@@ -29,18 +29,18 @@ Because Core Data is not thread-safe, use this block function to create and merg
 ```objc
 [self performBlockOnChildContext:^(NSManagedObjectContext *context, NSString *loggingDescriptor)
 {
-    // Your code goes here to fetch/insert/whatever you want. Use the "context" variable instead of the "managedObjectContext" property of the singleton.
+    // Your code goes here to fetch/insert/whatever you want. Use this "context" variable instead of the "managedObjectContext" property of the singleton.
     
-} withLoggingDescriptor:@"fetching of objects"];
+} withLoggingDescriptor:@"the fetching of objects"];
 
 ```
 
-... The "loggingDescriptor" is passed to the block, and used for describing errors in a noun format, such as "fetch of photo objects".
+... The "loggingDescriptor" is passed to the block for convenience, and but is also used for describing errors that occur during merge in a noun format, such as "the fetching of photo objects", etc.
 
 Other useful tips:
 * If your database becomes corrupt, **it will automatically be deleted from disk** and recreated fresh. The `dataStoreWasResetOrCreatedOnLoad` property of the singleton will be TRUE in this case.
-* You may subclass the singleton and take advantage of implementing its `cleanUpOldObjects:` method. This method is called (on the main thread) whenever the main context was just saved successfully. The context will then re-save again after this method finishes, but only if any changes were made since the first save.
-* You may also optionally subclass its `handleSaveError:` method, which is passed any error(s) that occur during the saving of the main context.
+* You may subclass the singleton and take advantage of implementing its `cleanUpOldObjects:` method. This method is called (on the main thread) whenever the main context was just saved successfully. The context will then again re-save just after this method finishes, but only if there were any changes made since the first save occurred.
+* You may also optionally subclass its `handleSaveError:` method, which is passed any error(s) that occur during the saving of the main context. You may choose to throw an exception here, reset the context or persistent store entirely, and/or log to a remote logging service. *(for example)*
 
 
 ## Installation
