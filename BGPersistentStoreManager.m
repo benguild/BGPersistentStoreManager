@@ -293,6 +293,8 @@
     block(context, loggingDescriptor);
     ////
     
+    NSError *error;
+    
     if ([context hasChanges] && ![context save:&error])
     {
         NSLog(@"Error saving context during %@: %@, %@", loggingDescriptor, [error localizedDescription], [error userInfo]);
