@@ -8,6 +8,10 @@ In this pod, Core Data is automatically configured as a singleton, providing bot
 
 The persistent store will be saved to disk **automatically** when the app enters the background or is terminated.
 
+[![Version](https://img.shields.io/cocoapods/v/BGPersistentStoreManager.svg?style=flat)](http://cocoapods.org/pods/BGPersistentStoreManager)
+[![License](https://img.shields.io/cocoapods/l/BGPersistentStoreManager.svg?style=flat)](http://cocoapods.org/pods/BGPersistentStoreManager)
+[![Platform](https://img.shields.io/cocoapods/p/BGPersistentStoreManager.svg?style=flat)](http://cocoapods.org/pods/BGPersistentStoreManager)
+
 ## Usage
 
 To initiate the managed object context, initiate the singleton:
