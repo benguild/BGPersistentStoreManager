@@ -24,7 +24,7 @@ To initiate the managed object context, initiate the singleton:
 The `managedObjectContext` can be accessed from the main thread, like so:
 
 ```objc
-[[BGPersistentStoreManager sharedManager] managedObjectContext]
+[[BGPersistentStoreManager sharedManager] managedObjectContext];
 
 ```
 
