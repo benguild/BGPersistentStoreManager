@@ -52,6 +52,14 @@ it, simply add the following line to your Podfile:
 pod "BGPersistentStoreManager"
 ```
 
+
+## Dependencies
+
+This Cocoa Pod bundles and depends on `KCOrderedAccessorFix` to fix "'CoreDataGeneratedAccessors' for ordered, to-many relationships" automatically.
+
+More information can be found here: https://github.com/CFKevinRef/KCOrderedAccessorFix
+
+
 ## Author
 
 Ben Guild, email@benguild.com
