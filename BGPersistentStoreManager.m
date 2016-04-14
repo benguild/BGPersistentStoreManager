@@ -205,7 +205,7 @@
             
             if ([[persistentStoreCoordinator persistentStores] count])
             {
-                [persistentStoreCoordinator removePersistentStore:[[persistentStoreCoordinator persistentStores] objectAtIndex:0] error:nil];
+                [persistentStoreCoordinator removePersistentStore:[[persistentStoreCoordinator persistentStores] firstObject] error:nil];
                 
             }
             
@@ -223,11 +223,11 @@
     }
     ////
     
-    [dataStoreURL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil];
+    [dataStoreURL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
     
     for (NSURL *dataStoreAuxiliaryFileURL in dataStoreAuxiliaryFiles)
     {
-        [dataStoreAuxiliaryFileURL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil];
+        [dataStoreAuxiliaryFileURL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
         
     }
     ////
