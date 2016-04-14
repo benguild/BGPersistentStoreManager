@@ -1,6 +1,6 @@
 # BGPersistentStoreManager
 
-Core Data for Apple’s iOS/macOS/etc. has many great uses, but requires some initial setup, configuration, and understanding to create/save/merge persistent data stores.
+[Core Data](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/index.html) for Apple’s iOS/macOS/watchOS/etc. has many great uses, but requires some initial setup, configuration, and understanding to create/save/merge persistent data stores.
 
 In this pod, Core Data is automatically configured as a singleton, providing both access to its main context (when reading/writing on the main thread) and also conveniently on child contexts through a helper “block” function. The helper block for child contexts (primarily for use from non-main threads) automatically runs on the thread on which its called, so you can run it on any thread including the current one.
 
