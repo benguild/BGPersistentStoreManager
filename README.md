@@ -39,10 +39,10 @@ Because Core Data is not thread-safe, use this block function to create and merg
 
 ```
 
-... The "loggingDescriptor" is passed to the block for convenience, and but is also used for describing errors that occur during merge in a noun format, such as "the fetching of photo objects", etc.
+... The "loggingDescriptor" is also passed to the block for convenience, but is primarily used for describing any errors that occur during the subsequent merge of the child context using a noun-style phrase, such as "the fetching of photo objects", etc.
 
 Other useful tips:
-* If your database becomes corrupt, **it will automatically be deleted from disk** and recreated fresh. The `dataStoreWasResetOrCreatedOnLoad` property of the singleton will be TRUE in this case.
+* If your database becomes corrupt or unusable, **it will automatically be deleted from disk** and recreated fresh and empty using the latest model version. The `dataStoreWasResetOrCreatedOnLoad` property of the singleton will be set to TRUE in this case.
 * You may subclass the singleton and take advantage of implementing its `cleanUpOldObjects:` method. This method is called (on the main thread) whenever the main context was just saved successfully. The context will then again re-save just after this method finishes, but only if there were any changes made since the first save occurred.
 * You may also optionally subclass its `handleSaveError:` method, which is passed any error(s) that occur during the saving of the main context. You may choose to throw an exception here, reset the context or persistent store entirely, and/or log to a remote logging service. *(for example)*
 
