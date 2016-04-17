@@ -16,7 +16,7 @@
 
 @property (readonly, assign, nonatomic) BOOL dataStoreWasResetOrCreatedOnLoad;
 
-+ (BGPersistentStoreManager *)sharedManager;
++ (instancetype)sharedManager
 
 - (NSManagedObjectContext *)managedObjectContext;
 

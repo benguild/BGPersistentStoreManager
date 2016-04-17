@@ -23,7 +23,7 @@
 
 @implementation BGPersistentStoreManager
 
-+ (BGPersistentStoreManager *)sharedManager
++ (instancetype)sharedManager
 {
     static BGPersistentStoreManager *sharedManager=nil;
     static dispatch_once_t onceToken;
