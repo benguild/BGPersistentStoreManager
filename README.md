@@ -31,7 +31,7 @@ The `managedObjectContext` can be accessed from the main thread, like so:
 Because Core Data is not thread-safe, use this block function to create and merge a child context when fetching or making changes from a non-main thread:
 
 ```objc
-[self performBlockOnChildContext:^(NSManagedObjectContext *context, NSString *loggingDescriptor)
+[[BGPersistentStoreManager sharedManager] performBlockOnChildContext:^(NSManagedObjectContext *context, NSString *loggingDescriptor)
 {
     // Your code goes here to fetch/insert/whatever you want. Use this "context" variable instead of the "managedObjectContext" property of the singleton.
     
