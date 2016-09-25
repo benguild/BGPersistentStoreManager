@@ -13,7 +13,7 @@ The persistent store will be saved to disk **automatically** when the app enters
 [![Platform](https://img.shields.io/cocoapods/p/BGPersistentStoreManager.svg?style=flat)](http://cocoapods.org/pods/BGPersistentStoreManager)
 
 ### Some other helpful Cocoa Pods:
-- **`BGRecursiveTableViewDataSource`** ([link](https://github.com/benguild/BGRecursiveTableViewDataSource)) — Recursive “stacking” and modularization of UITableViewDataSource(s) with Apple iOS's UIKit.
+- **`BGRecursiveTableViewDataSource`** ([link](https://github.com/benguild/BGRecursiveTableViewDataSource)) — Recursive “stacking” and modularization of `UITableViewDataSource(s)` with Apple iOS's UIKit.
 - **`BGTableViewRowActionWithImage`** ([link](https://github.com/benguild/BGTableViewRowActionWithImage)) — A variation on the iOS 8.0+ `UITableViewRowAction` to support icons, with text below. Similar to the iOS 9 Mail application and various third-party applications.
 
 ## Usage
