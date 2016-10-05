@@ -6,7 +6,7 @@ In this pod, Core Data is automatically configured as a singleton, providing bot
 
 **This pod will create a database in the “Caches” folder for the app, because Core Data is subject to occasional glitches, migration errors, and corruption.** The state of `BOOL` property `dataStoreWasResetOrCreatedOnLoad` will be retained for the life of the session to suggest that any desired permanent local data should be restored from another source during that session. In many (if not most) circumstances, Core Data should be treated only as temporary local data persistence for convenience, speed/optimization, and offline functionality, due to the chance of data loss from user device corruption, low disk space, and other edge-case scenarios. This structure enforces that philosophy.
 
-The persistent store will be saved to disk **automatically** when the app enters the background or is terminated.
+The persistent store will be saved to disk **automatically** when the app enters the background or is terminated by the user.
 
 [![Version](https://img.shields.io/cocoapods/v/BGPersistentStoreManager.svg?style=flat)](http://cocoapods.org/pods/BGPersistentStoreManager)
 [![License](https://img.shields.io/cocoapods/l/BGPersistentStoreManager.svg?style=flat)](http://cocoapods.org/pods/BGPersistentStoreManager)
