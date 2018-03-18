@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = "BGPersistentStoreManager"
-  s.version          = "1.0.7"
+  s.version          = "1.0.8"
   s.homepage         = "https://github.com/benguild/BGPersistentStoreManager"
   s.summary          = "A simple singleton/wrapper/manager for the Apple iOS/macOS/etc. \"Core Data\" `NSPersistentStore` object/contexts."
   s.license          = 'MIT'
-  s.author           = { "Ben Guild" => "email@benguild.com" }
+  s.author           = { "Ben Guild" => "hello@benguild.com" }
   s.source           = { :git => "https://github.com/benguild/BGPersistentStoreManager.git", :tag => s.version.to_s }
   s.source_files     = 'BGPersistentStoreManager.{h,m}'
   s.social_media_url = 'https://twitter.com/benguild'
