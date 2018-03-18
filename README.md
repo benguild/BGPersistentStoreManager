@@ -70,7 +70,7 @@ More information can be found here: https://github.com/CFKevinRef/KCOrderedAcces
 
 ## Author
 
-Ben Guild, email@benguild.com
+Ben Guild, hello@benguild.com
 
 ## License
 
