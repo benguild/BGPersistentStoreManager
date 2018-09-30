@@ -15,5 +15,4 @@ Pod::Spec.new do |s|
   s.framework = 'CoreData'
 
   s.dependency   'KCOrderedAccessorFix'
-
 end
