@@ -34,11 +34,13 @@
 
 - (id)init {
     if (self = [super init]) {
+        __weak BGPersistentStoreManager *weakSelf = self;
+
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification
                                                           object:nil
                                                            queue:nil
                                                       usingBlock:^(NSNotification *note) {
-                                                          [self performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
+                                                          [weakSelf performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
                                                       }];
 
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillTerminateNotification
@@ -47,7 +49,8 @@
                                                       usingBlock:^(NSNotification *note) {
                                                           // NOTE: This is not guaranteed to be called, but is here in case the app does not
                                                           //  support backgrounding... etc.
-                                                          [self performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
+
+                                                          [weakSelf performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
                                                       }];
 
         [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification
@@ -61,14 +64,13 @@
                                                           NSManagedObjectContext *context = [note object];
 
                                                           if ([[context parentContext] persistentStoreCoordinator] &&
-                                                              [[context parentContext] persistentStoreCoordinator] != _persistentStoreCoordinator) {
+                                                              [[context parentContext] persistentStoreCoordinator] != [weakSelf persistentStoreCoordinator]) {
                                                               // NOTE: This will perform merges multiple times through the application if there are multiple
                                                               //  cases. Not sure if this matters, as they'll only merge into the final context if the
                                                               //  `persistentStoreCoordinator` is a match?
                                                               
                                                               return;
                                                           }
-                                                          ////
 
                                                           [[context parentContext] performBlock:^{
                                                                [[context parentContext] mergeChangesFromContextDidSaveNotification:note];
