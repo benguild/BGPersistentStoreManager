@@ -34,13 +34,11 @@
 
 - (id)init {
     if (self = [super init]) {
-        __weak BGPersistentStoreManager *weakSelf = self;
-
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification
                                                           object:nil
                                                            queue:nil
                                                       usingBlock:^(NSNotification *note) {
-                                                          [weakSelf performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
+                                                          [self performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
                                                       }];
 
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillTerminateNotification
@@ -50,7 +48,7 @@
                                                           // NOTE: This is not guaranteed to be called, but is here in case the app does not
                                                           //  support backgrounding... etc.
 
-                                                          [weakSelf performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
+                                                          [self performContextSaveOperationAndOptionallyCleanUpOldObjects:YES];
                                                       }];
 
         [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification
@@ -64,7 +62,7 @@
                                                           NSManagedObjectContext *context = [note object];
 
                                                           if ([[context parentContext] persistentStoreCoordinator] &&
-                                                              [[context parentContext] persistentStoreCoordinator] != [weakSelf persistentStoreCoordinator]) {
+                                                              [[context parentContext] persistentStoreCoordinator] != _persistentStoreCoordinator) {
                                                               // NOTE: This will perform merges multiple times through the application if there are multiple
                                                               //  cases. Not sure if this matters, as they'll only merge into the final context if the
                                                               //  `persistentStoreCoordinator` is a match?
