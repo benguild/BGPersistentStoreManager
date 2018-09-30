@@ -18,25 +18,22 @@ To initiate the managed object context, initiate the singleton:
 
 ```objc
 [BGPersistentStoreManager sharedManager];
-
 ```
 
 The `managedObjectContext` can be accessed from the main thread, like so:
 
 ```objc
 [[BGPersistentStoreManager sharedManager] managedObjectContext];
-
 ```
 
 Because Core Data is not thread-safe, use this block function to create and merge a child context when fetching or making changes from a non-main thread:
 
 ```objc
-[[BGPersistentStoreManager sharedManager] performBlockOnChildContext:^(NSManagedObjectContext *context, NSString *loggingDescriptor)
-{
-    // Your code goes here to fetch/insert/whatever you want. Use this "context" variable instead of the "managedObjectContext" property of the singleton.
-    
+[[BGPersistentStoreManager sharedManager] performBlockOnChildContext:^(NSManagedObjectContext *context,
+                                                                       NSString *loggingDescriptor) {
+    // Your code goes here to fetch/insert/whatever you want. Use this "context" variable instead
+	//  of the "managedObjectContext" property of the singleton.
 } withLoggingDescriptor:@"the fetching of objects"];
-
 ```
 
 ... The `loggingDescriptor` is also passed to the block for convenience, but is primarily used for describing any errors that occur during the subsequent merge of the child context using a noun-style phrase, such as "the fetching of photo objects", etc.

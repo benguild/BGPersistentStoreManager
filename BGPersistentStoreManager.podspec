@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "BGPersistentStoreManager"
-  s.version          = "1.0.8"
+  s.version          = "1.0.9"
   s.homepage         = "https://github.com/benguild/BGPersistentStoreManager"
   s.summary          = "A simple singleton/wrapper/manager for the Apple iOS/macOS/etc. \"Core Data\" `NSPersistentStore` object/contexts."
   s.license          = 'MIT'
